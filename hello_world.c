@@ -3,5 +3,6 @@
   int main()
   {
     printf("my name is naseeba begum\n");
+    return 0;
   }
     
