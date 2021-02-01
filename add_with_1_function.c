@@ -11,7 +11,7 @@ int main()
     scanf("%d", &num2);
     res=add(num1,num2);
     printf("\nAddition of Two Numbers: %d", res);
-    getch();
+    
     return 0;
 }
  
