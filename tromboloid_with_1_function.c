@@ -1,11 +1,7 @@
 //Write a program to find the volume of a tromboloid using one function
 #include<stdio.h>
-float volume(float h,float d,float b)
-{   
-    float a=((h*d*b)+(d/b))/3;
-	return a;
-}
- 
+
+
 float main()
 {
  
@@ -16,7 +12,7 @@ float main()
 	scanf("%f",&d);
 	printf("enter breadth: ");
 	scanf("%f",&b);
-    b=volume(h,b,d);
-	printf("volume: %f\n",b);
+        a=((h*d*b)+(d/b))/3;
+	printf("volume of tromoboloid given h,b,d is :%f",a);
 	return 0;
 }
