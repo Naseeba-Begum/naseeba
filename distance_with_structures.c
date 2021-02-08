@@ -9,7 +9,7 @@ struct Point {
 
 float getDistance(struct Point a, struct Point b)
 {
-    double distance;
+    float distance;
     distance = sqrt((a.x - b.x) * (a.x - b.x) + (a.y-b.y) *(a.y-b.y));
     return distance;
 }
