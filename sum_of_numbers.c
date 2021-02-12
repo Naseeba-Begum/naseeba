@@ -16,6 +16,7 @@ int input_array(int n, int a[n])
         printf("Entering the element number %d of the array\n",i);
         scanf("%d",&a[i]);
     }
+ return 0;
 }
 
 int array_sum(int n, int a[n])
@@ -36,6 +37,7 @@ int results(int n, int a[n], int sum)
         printf("%d+",a[i]);
     }
     printf("%d = %d",a[i],sum);
+return 0;
 }
 
 int main()
