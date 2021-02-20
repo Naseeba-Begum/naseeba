@@ -1,23 +1,40 @@
 //WAP to find the sum of two fractions.
 #include<stdio.h>
-typedef struct
+struct frac
 {
-float n,d;
-} f;
-
-float sum_fraction(float n1,float n2,float d1,float d2)
+int numerator,denomerator;
+};
+typedef struct frac fraction;
+fraction input()
 {
-    f f1={n1,d1};
-    f f2={n2,d2};
-    f r={f1.n*f2.d+f2.n*f1.d, f1.d*f2.d};
-    printf("fraction of two numbers %f / %f and %f /%f = %f/%f",n1 ,d1,n2,d2,r.n,r.d); 
+fraction n;
+printf("enter numerator : ");
+scanf("%d",&n.numerator);
+printf("enter denomerator");
+scanf("%d",&n.denomerator);
+return n;
 }
-float main()
+fraction add(fraction a, fraction b)
 {
-    float n1, d1,n2,d2,a,b;
-    printf("for fraction 1 : enter the value of numerator and denominator:");
-    scanf("%f%f",&n1,&d1);
-    printf("for fraction 2 :enter the value of numerator and denominator :");
-    scanf("%f%f",&n2,&d2);
-    sum_fraction(n1,n2,d1,d2);
-} 
+fraction result;
+if(a.denomerator==b.denomerator)
+{
+result.denomerator=a.denomerator;
+result.numerator=a.numerator+b.numerator;
+}
+else
+{
+result.denomerator=a.denomerator*b.denomerator;
+result.numerator=(a.numerator*b.denomerator)+(b.numerator*a.denomerator);
+}
+return result;
+}
+int main()
+{
+fraction a,b,c;
+a=input();
+b=input();
+c=add(a,b);
+printf("the sum of two fraction given numerator and denomerator  %d, %d and %d,%d is %d /%d ",a.numerator,a.denomerator,b.numerator,b.denomerator,c.numerator, c.denomerator);
+return 0;
+}
