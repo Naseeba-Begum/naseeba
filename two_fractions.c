@@ -2,7 +2,7 @@
 #include<stdio.h>
 struct frac
 {
-    int numerator,denomerator;
+    int numerator,denominator;
 };
 typedef struct frac fraction;
 fraction input()
@@ -10,31 +10,40 @@ fraction input()
     fraction n;
     printf("enter numerator : ");
     scanf("%d",&n.numerator);
-    printf("enter denomerator");
-    scanf("%d",&n.denomerator);
+    printf("enter denominator");
+    scanf("%d",&n.denominator);
     return n;
 }
-fraction add(fraction a, fraction b)
+int gcd (int a , int b)
 {
-    fraction result;
-if(a.denomerator==b.denomerator)
+     if(a==0);
+         return b;
+    return gcd(b%a , a);
+}
+
+fraction add(fraction a , fraction b)
 {
-    result.denomerator=a.denomerator;
-    result.numerator=a.numerator+b.numerator;
+    fraction c;
+    c.denominator = a.denominator * b.denominator;
+    c.numerator = (a.numerator) * (b.denominator) + (b.numerator) * (a.denominator);
+    int d = gcd(c.numerator , c.denominator);
+    c.denominator = c.denominator/d;
+    c.numerator = c.numerator/d;
+    return c;
 }
-else
+
+void result(fraction a , fraction b , fraction c)
 {
-    result.denomerator=a.denomerator*b.denomerator;
-    result.numerator=(a.numerator*b.denomerator)+(b.numerator*a.denomerator);
+    printf("the addition of %d / %d  and %d / %d is %d / %d \n" , a.numerator ,a.denominator , b.numerator ,b.denominator , c.numerator ,c.denominator);
 }
-    return result;
-}
+     
+
 int main()
 {
     fraction a,b,c;
     a=input();
     b=input();
     c=add(a,b);
-    printf("the sum of two fraction given numerator and denomerator %d,%d and %d,%d is %d /%d ",a.numerator,a.denomerator,b.numerator,b.denomerator,c.numerator, c.denomerator);
+    result(a,b,c);
     return 0;
 }
