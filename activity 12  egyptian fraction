@@ -1,1 +1,86 @@
+#include<stdio.h>
+struct fraction
+{
+    int n,d;
+};
+typedef struct fraction frac;
+int max_num_of_instances()
+{
+    int maximum;
+    printf("\nenter the number of instances : \n");
+    scanf("%d",&maximum);
+    return maximum;
+}
 
+int input_size()
+{
+    int a;
+    printf("enter the maximum number of fractions :\n");
+    scanf("%d",&a);
+    return a;
+}
+
+void input(int n, frac f[n])
+{
+    printf("enter the deno respectively :\n");
+    for(int i=0; i<n;i++)
+    {
+        f[i].n = 1;
+        scanf("%d",&f[i].d);
+    }
+}
+int gcd(int m , int n)
+{
+    if(n==0)
+        return m;
+    return gcd (n , m%n);
+}
+void display(int n , frac f[n] , frac sum)
+{
+    for (int i=0;i<n;i++)
+{
+        printf("%d / %d + " , f[i].n , f[i].d);
+}
+printf("0 = %d / %d" , sum.n , sum.d);
+return ;
+}
+frac compute_2fractions(frac f1, frac f2)
+{
+    frac f;
+    f.d = f1.d *f2.d;
+    f.n = (f1.n)*(f2.d)+(f2.n)*(f1.d);
+    int e = gcd(f.n , f.d); //e is a common factor //
+    f.d = f.d/e;
+    f.n = f.n/e;
+    return f;
+}
+frac compute_nfractions(int n , frac f[n])
+{
+    frac sum;
+    sum.n = 0;
+    sum.d=1;
+    for(int i=0;i<n;i++)
+{
+          sum = compute_2fractions(sum , f[i]);
+}
+    display(n,f,sum);
+}
+void generate_egyptian_fraction(int max)
+{
+    int n;
+    frac f[n];
+    for(int i=0;i<max;i++)
+{
+        n=input_size();
+        input(n,f);
+        compute_nfractions(n,f);
+}
+    return ;
+}
+int main()
+{
+    int max;
+    max = max_num_of_instances();
+    generate_egyptian_fraction(max);
+    return 0;
+}
